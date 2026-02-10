@@ -139,12 +139,13 @@ static class Convertir implements Callable<Integer>{
         try {
             if (file.createNewFile()) {
                 System.out.println("Archivo creado en: " + file.getAbsolutePath());
-                FileWriter writer = new FileWriter(file);
-                writer.write(fileContent);
-                writer.close();
+
             } else {
-                System.err.println("Hubo un problema creando el archivo en: " + file.getAbsolutePath());
+                System.err.println("Archivo sobreescrito en: " + file.getAbsolutePath());
             }
+            FileWriter writer = new FileWriter(file);
+            writer.write(fileContent);
+            writer.close();
         } catch (IOException e) {
             e.printStackTrace();
             System.err.println("Hubo un problema creando el archivo: " + e.getMessage());
